@@ -70,12 +70,16 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 });
                             } else {
+                                int userId = userEntity[0].getUserId();
+
+                                final Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                intent.putExtra("userId", userId);
 
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
                                         Toast.makeText(getApplicationContext(), "Credenciais Aceitas!", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                        startActivity(intent);
                                     }
                                 });
 

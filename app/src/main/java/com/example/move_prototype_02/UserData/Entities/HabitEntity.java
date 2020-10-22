@@ -15,8 +15,8 @@ public class HabitEntity {
     @ForeignKey(entity = UserEntity.class, parentColumns = {"userId"}, childColumns = {"userId"})
     private int userId;
 
-    @ForeignKey(entity = FreqEntity.class, parentColumns = {"freqId"}, childColumns = {"freqId"})
-    private int freqId;
+//    @ForeignKey(entity = FreqEntity.class, parentColumns = {"freqId"}, childColumns = {"freqId"})
+//    private int freqId;
 
     @ColumnInfo(name = "name")
     private String name;
@@ -26,17 +26,17 @@ public class HabitEntity {
 
     @ColumnInfo(name = "goal")
     private int goal;
+//
+//    @ColumnInfo(name = "score")
+//    private int score;
 
-    @ColumnInfo(name = "score")
-    private int score;
-
-    public HabitEntity(int userId, int freqId, String name, String unit, int goal, int score) {
+    public HabitEntity(int userId, String name, String unit, int goal) {
         this.userId = userId;
-        this.freqId = freqId;
+//        this.freqId = freqId;
         this.name = name;
         this.unit = unit;
         this.goal = goal;
-        this.score = score;
+//        this.score = score;
     }
 
     public void setHabitId(int habitId) {
@@ -51,9 +51,9 @@ public class HabitEntity {
         return userId;
     }
 
-    public int getFreqId() {
-        return freqId;
-    }
+//    public int getFreqId() {
+//        return freqId;
+//    }
 
     public String getName() {
         return name;
@@ -67,7 +67,7 @@ public class HabitEntity {
         return goal;
     }
 
-    public int getScore() {
-        return score;
-    }
+//    public int getScore() {
+//        return score;
+//    }
 }

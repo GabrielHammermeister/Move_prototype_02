@@ -15,6 +15,7 @@
         >
 
         <Button
+            android:id="@+id/habit_button"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="Paint"
@@ -22,7 +23,6 @@
             android:drawableTint="#FFFFFF"
             android:paddingTop="15dp"
             android:textSize="15sp"
-
             />
 
     </RelativeLayout>

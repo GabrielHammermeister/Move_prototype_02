@@ -25,8 +25,11 @@ public interface HabitDao {
     void update(HabitEntity habitEntity);
 
     // CHAMADO FORA DO REPOSITORIO
-    @Query("SELECT * FROM habits WHERE userId=(:userId) AND freqId=(:freqId) ORDER BY habitId ASC")
-    LiveData<List<HabitEntity>> getUserHabits(int userId, int freqId);
+    @Query("SELECT * FROM habits WHERE userId=(:userId) ORDER BY habitId ASC")
+    LiveData<List<HabitEntity>> getUserHabits(int userId);
+
+    @Query("SELECT * FROM habits")
+    LiveData<List<HabitEntity>> getAllHabits();
 
 
 
