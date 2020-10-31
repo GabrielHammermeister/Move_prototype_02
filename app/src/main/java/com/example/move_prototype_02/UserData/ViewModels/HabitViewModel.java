@@ -18,8 +18,24 @@ public class HabitViewModel extends AndroidViewModel {
 
     public HabitViewModel(@NonNull Application application) {
         super(application);
-
         repository = new HabitRepository(application);
-        allHabits = repository.
     }
+
+    public void insert(HabitEntity habitEntity){
+        repository.insert(habitEntity);
+    }
+
+    public void delete(HabitEntity habitEntity){
+        repository.delete(habitEntity);
+    }
+
+    public void update(HabitEntity habitEntity){
+        repository.update(habitEntity);
+    }
+
+    public LiveData<List<HabitEntity>> getAllUserHabits(int userId){
+        return repository.getAllUserHabits(userId);
+    }
+
+
 }

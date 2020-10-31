@@ -15,14 +15,14 @@ import java.util.List;
 @Dao
 public interface HabitDao {
 
-    @Insert
-    void insert(HabitEntity habitEntity);
+    @Query("INSERT INTO habits(userId, name, unit, goal) VALUES(:userId, habitEntity)")
+    void insert(HabitEntity habitEntity, int userId);
 
     @Delete
-    void delete(HabitEntity habitEntity);
+    void delete(HabitEntity habitEntity, int userId);
 
     @Update
-    void update(HabitEntity habitEntity);
+    void update(HabitEntity habitEntity, int userId);
 
     // CHAMADO FORA DO REPOSITORIO
     @Query("SELECT * FROM habits WHERE userId=(:userId) ORDER BY habitId ASC")

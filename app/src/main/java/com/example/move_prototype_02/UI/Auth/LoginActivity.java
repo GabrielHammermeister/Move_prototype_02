@@ -15,6 +15,7 @@ import com.example.move_prototype_02.UI.Home.HomeActivity;
 import com.example.move_prototype_02.UserData.Daos.UserDao;
 import com.example.move_prototype_02.UserData.Entities.UserEntity;
 import com.example.move_prototype_02.UserData.MoveDatabase;
+import com.example.move_prototype_02.UserData.ViewModels.UserViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView textView;
     TextInputEditText userInput, passInput;
     UserDao userDao;
+    UserViewModel userViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,11 @@ public class LoginActivity extends AppCompatActivity {
         textView = findViewById(R.id.Id_cadastro2);
         userInput = findViewById(R.id.Id_userEmail);
         passInput = findViewById(R.id.Id_userPassword);
+
+        userViewModel = new ViewModelProvider(
+                this, ViewModelProvider.
+                AndroidViewModelFactory.
+                getInstance(this.getApplication())).get(UserViewModel.class);
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -51,41 +58,22 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Preencha todos os campos", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    final UserEntity[] userEntity = new UserEntity[1];
+                    UserEntity userEntity = null;
+                    userEntity = userViewModel.login(usuario, senha);
 
-                    MoveDatabase moveDatabase = MoveDatabase.getUserDatabase(getApplicationContext());
-                    final UserDao userDao = moveDatabase.userDao();
+                    if( userEntity == null)
+                    {
+                        Toast.makeText(getApplicationContext(), "Credenciais Invalidas!", Toast.LENGTH_SHORT).show();
 
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
+                    } else{
 
-                            userEntity[0] = userDao.login(usuario, senha);
-                            if(userEntity[0] == null)
-                            {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(getApplicationContext(), "Credenciais Invalidas!", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            } else {
-                                int userId = userEntity[0].getUserId();
+                        Toast.makeText(getApplicationContext(), "Credenciais Aceitas!", Toast.LENGTH_SHORT).show();
 
-                                final Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                                intent.putExtra("userId", userId);
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        intent.putExtra("userId", userEntity.getUserId());
+                        startActivity(intent);
+                    }
 
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(getApplicationContext(), "Credenciais Aceitas!", Toast.LENGTH_SHORT).show();
-                                        startActivity(intent);
-                                    }
-                                });
-
-                            }
-                        }
-                    }).start();
                 }
             }
         });

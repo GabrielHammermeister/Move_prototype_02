@@ -2,16 +2,16 @@ package com.example.move_prototype_02.UserData.Respositories;
 
 import android.app.Application;
 
-import androidx.lifecycle.LiveData;
-
 import com.example.move_prototype_02.UserData.MoveDatabase;
 import com.example.move_prototype_02.UserData.Daos.UserDao;
 import com.example.move_prototype_02.UserData.Entities.UserEntity;
 
+import java.util.concurrent.Executor;
+
 public class UserRepository {
 
     private UserDao userDao;
-    private LiveData<UserEntity> userEntityLiveData;
+    private UserEntity userEntity;
 
     // Constructor
     public UserRepository(Application application)
@@ -20,25 +20,43 @@ public class UserRepository {
         userDao = moveDatabase.userDao();
     }
 
-    // Metodo publico para registro
-//    public void register(final UserEntity userEntity){
-//        new registerUserAsyncTask(userDao).execute(userEntity);
-//    }
-//
-//
-//    private static class registerUserAsyncTask extends AsyncTask<UserEntity, Void, Void>{
-//
-//        UserDao userDao;
-//
-//        private registerUserAsyncTask(UserDao userDao) {
-//            this.userDao = userDao;
-//        }
-//
-//        @Override
-//        protected Void doInBackground(UserEntity... userEntities) {
-//            userDao.registerUser(userEntities[0]);
-//            return null;
-//        }
-//    }
+    public UserEntity getUserLogin(final String usuario, final String senha){
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                userEntity = userDao.login(usuario, senha);
+            }
+        }).start();
+        return userEntity;
+    }
+
+    public void registerUser(UserEntity userEntity){
+        new DirectExecutor().execute(new InsertRunnable(userEntity));
+    }
+
+// Implementando o Executor e o Runnables
+    class DirectExecutor implements Executor {
+
+        public void execute(Runnable r) {
+            r.run();
+        }
+    }
+
+    private class InsertRunnable implements Runnable{
+
+        UserEntity userEntity;
+
+        public InsertRunnable(UserEntity userEntity) {
+            this.userEntity = userEntity;
+        }
+
+        @Override
+        public void run() {
+            userDao.registerUser(userEntity);
+        }
+    }
+
+
 
 }

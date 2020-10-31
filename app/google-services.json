@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "997752962779",
+    "firebase_url": "https://move-cc97a.firebaseio.com",
+    "project_id": "move-cc97a",
+    "storage_bucket": "move-cc97a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997752962779:android:53bfe789945a0ec34a16fe",
+        "android_client_info": {
+          "package_name": "com.example.move_prototype_02"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997752962779-jqelp7k0aa2vqvgtqu3dkmmsrde31pt6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt1RjklRxFzuu2cX2vIoEe421u3IVByfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997752962779-jqelp7k0aa2vqvgtqu3dkmmsrde31pt6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

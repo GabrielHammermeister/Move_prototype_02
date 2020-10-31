@@ -14,9 +14,9 @@ import java.util.concurrent.Executor;
 
 public class HabitRepository {
 
-    MoveDatabase moveDatabase;
-    HabitDao habitDao;
-    LiveData<List<HabitEntity>> allHabits;
+    private MoveDatabase moveDatabase;
+    private HabitDao habitDao;
+    private LiveData<List<HabitEntity>> allHabits;
 
     // Constructor
     public HabitRepository(Application application) {
@@ -25,7 +25,6 @@ public class HabitRepository {
         this.habitDao = moveDatabase.habitDao();
         allHabits = habitDao.getAllHabits();
     }
-
 
     // Metodos publicos de DML
     public void insert(HabitEntity habitEntity){
@@ -40,16 +39,12 @@ public class HabitRepository {
         new DirectExecutor().execute(new UpdateRunnable(habitEntity));
     }
 
-    public LiveData<List<HabitEntity>> getAllHabits(int userId){
-        List<HabitEntity> lista;
-        LiveData<List<HabitEntity>> newAllHabits;
-        lista = allHabits.getValue();
+    public LiveData<List<HabitEntity>> getAllHabits(){
+        return allHabits;
+    }
 
-        for(HabitEntity habit: lista){
-            if(habit.getUserId() == userId){
-                newAllHabits
-            }
-        }
+    public LiveData<List<HabitEntity>> getAllUserHabits(int userId){
+        return habitDao.getUserHabits(userId);
     }
 
 
