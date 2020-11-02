@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#B388FF"
-    tools:context=".UI.Home.HomeActivity"><![CDATA[
+    tools:context=".View.Home.HomeActivity"><![CDATA[
 
 
     0

@@ -10,19 +10,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
-        android:background="#14074A"
+        android:background="#3B2951"
         >
 
         <Button
             android:id="@+id/habit_button"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:text="Paint"
             android:drawableTop="@drawable/ic_baseline_palette_24"
             android:drawableTint="#FFFFFF"
             android:paddingTop="15dp"
-            android:textSize="15sp"
-            />
+            android:text="Paint"
+            android:textSize="15sp" />
 
     </RelativeLayout>
 

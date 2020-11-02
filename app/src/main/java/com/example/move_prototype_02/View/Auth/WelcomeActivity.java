@@ -1,4 +1,4 @@
-package com.example.move_prototype_02.UI.Auth;
+package com.example.move_prototype_02.View.Auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 

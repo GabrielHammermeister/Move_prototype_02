@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#9584FFFF"
-    tools:context=".UI.Home.NewHabit_fragment">
+    tools:context=".View.Home.NewHabit_fragment">
 
 
     <EditText
@@ -29,8 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:ems="10"
-        android:inputType="number"
         android:hint="Meta"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.179"
         app:layout_constraintStart_toStartOf="parent"

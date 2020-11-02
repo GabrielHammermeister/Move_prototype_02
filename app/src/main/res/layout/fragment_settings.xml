@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFF8D"
-    tools:context=".UI.Home.Settings_fragment">
+    tools:context=".View.Home.Settings_fragment">
 
 
     <TextView

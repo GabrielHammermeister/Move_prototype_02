@@ -1,4 +1,4 @@
-package com.example.move_prototype_02.UI.Home;
+package com.example.move_prototype_02.View.Home;
 
 import android.os.Bundle;
 
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 
 import com.example.move_prototype_02.R;
 
-public class Habit_fragment extends Fragment {
+public class Settings_fragment extends Fragment {
 
-    public Habit_fragment() {
+    public Settings_fragment() {
         // Required empty public constructor
     }
 
@@ -20,8 +20,8 @@ public class Habit_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_habit, container, false);
+        View view =  inflater.inflate(R.layout.fragment_settings, container, false);
+
         return view;
     }
-
 }
