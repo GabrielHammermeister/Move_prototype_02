@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.move_prototype_02.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -24,10 +26,13 @@ import static java.lang.Integer.parseInt;
 
 public class NewHabit_fragment extends Fragment {
 
+    private FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
     private static final String TAG = "NewHabit_fragment";
-    private static final String KEY_TITLE = "Title";
-    private static final String KEY_GOAL = "Goal";
-    private static final String KEY_UNIT = "Unit";
+    private static final String KEY_TITLE = "title";
+    private static final String KEY_GOAL = "goal";
+    private static final String KEY_UNIT = "unit";
+    private static final String KEY_USERID = "userID";
 
     private EditText editTextGoal, editTextTitle, editTextUnit;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -67,6 +72,7 @@ public class NewHabit_fragment extends Fragment {
                 habito.put(KEY_TITLE, title);
                 habito.put(KEY_GOAL, goal);
                 habito.put(KEY_UNIT, unit);
+                habito.put(KEY_USERID, firebaseUser.getUid());
 
                 // Add a new document with a generated ID
                 db.collection("Habitos").add(habito);

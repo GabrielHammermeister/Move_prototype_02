@@ -1,6 +1,6 @@
 package com.example.move_prototype_02.Adapter;
 
-import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,22 +8,25 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.move_prototype_02.Model.Habit;
+import com.example.move_prototype_02.Model.HabitModel;
 import com.example.move_prototype_02.R;
+import com.example.move_prototype_02.View.Home.Habit_fragment;
 import com.example.move_prototype_02.View.Home.HomeActivity;
-import com.example.move_prototype_02.ViewModel.HabitViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitHolder> {
 
-    private List<Habit> habits = new ArrayList<>();
+    private List<HabitModel> habitModels = new ArrayList<>();
+    private Context context;
 
-
+    public void addContext(Context context){
+        this.context = context;
+    }
 
     @NonNull
     @Override
@@ -35,40 +38,45 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitHolder>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HabitHolder holder, int position) {
-        Habit currentHabit = habits.get(position);
+    public void onBindViewHolder(@NonNull final HabitHolder holder, int position) {
+        final HabitModel currentHabitModel = habitModels.get(position);
 
-        holder.button.setText(currentHabit.getTitle());
-        holder.button.setTag(currentHabit.getUserID());
+//        holder.button.setText(currentHabitModel.getTitle());
+//        holder.button.setTag(currentHabitModel.getUserID());
+//        holder.button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                HomeActivity homeActivity = (HomeActivity) context;
+//                homeActivity.setSelectedHabitModel(currentHabitModel);
+//
+//                FragmentManager fragmentManager = homeActivity.getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//                fragmentTransaction.replace(R.id.home_fragment, new Habit_fragment());
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+//            }
+//        });
     }
 
-    public void setHabits(List<Habit> habits) {
-        this.habits = habits;
+    public void setHabitModels(List<HabitModel> habitModels) {
+        this.habitModels = habitModels;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
 
-        return habits.size();
+        return habitModels.size();
     }
 
-    public static class HabitHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class HabitHolder extends RecyclerView.ViewHolder{
 
         private Button button;
 
         public HabitHolder(@NonNull View itemView) {
             super(itemView);
-
             button = itemView.findViewById(R.id.habit_button);
-        }
-
-        @Override
-        public void onClick(View view){
-
-            HomeActivity homeActivity = (HomeActivity) view.getParent();
-            HabitViewModel habitViewModel = new ViewModelProvider(homeActivity).get(HabitViewModel.class);
-
         }
     }
 }

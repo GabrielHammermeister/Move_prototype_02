@@ -116,21 +116,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/recyclerLayout"
-                android:layout_width="0dp"
-                android:layout_height="0dp">
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
         </LinearLayout>
     </HorizontalScrollView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -139,7 +133,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.391"
-        tools:listitem="@layout/habit_button" />
+        tools:listitem="@layout/habit_button"
+        android:visibility="visible"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

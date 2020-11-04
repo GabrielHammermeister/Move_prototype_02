@@ -1,69 +1,64 @@
 package com.example.move_prototype_02.View.Auth;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.move_prototype_02.R;
 import com.example.move_prototype_02.View.Home.HomeActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button button;
-    TextView textView;
-    TextInputEditText userInput, passInput;
+    private FirebaseAuth firebaseAuth;
+
+    private Button buttonLogin;
+    private TextView textViewRegister;
+    private TextInputEditText textInputEditTextEmail, textInputEditTextPassword;
+
+    private static String TAG = "LoginActivity";
+    private String email, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        button = findViewById(R.id.b_login);
-        textView = findViewById(R.id.Id_cadastro2);
-        userInput = findViewById(R.id.Id_userEmail);
-        passInput = findViewById(R.id.Id_userPassword);
+        firebaseAuth = FirebaseAuth.getInstance();
 
+        buttonLogin = findViewById(R.id.b_login);
+        textViewRegister = findViewById(R.id.Id_cadastro2);
+        textInputEditTextEmail = findViewById(R.id.Id_userEmail);
+        textInputEditTextPassword = findViewById(R.id.Id_userPassword);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
 
-//                final String usuario, senha;
-//
-//                usuario = userInput.getText().toString();
-//                senha = passInput.getText().toString();
-//
-//                if(usuario.isEmpty() || senha.isEmpty())
-//                {
-//                    Toast.makeText(getApplicationContext(), "Preencha todos os campos", Toast.LENGTH_SHORT).show();
-//                } else {
-//
-//                    UserEntity userEntity = null;
-//                    userEntity = userViewModel.login(usuario, senha);
-//
-//                    if( userEntity == null)
-//                    {
-//                        Toast.makeText(getApplicationContext(), "Credenciais Invalidas!", Toast.LENGTH_SHORT).show();
-//
-//                    } else{
-//
-//                        Toast.makeText(getApplicationContext(), "Credenciais Aceitas!", Toast.LENGTH_SHORT).show();
-//
-//                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-//                        intent.putExtra("userId", userEntity.getUserId());
-//                        startActivity(intent);
-//                    }
-//
-//                }
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                email = textInputEditTextEmail.getText().toString();
+                password = textInputEditTextPassword.getText().toString();
+
+                if(email.isEmpty() || password.isEmpty() ){
+                    Toast.makeText(LoginActivity.this, "Complete todos os campos",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    loginUser(email, password);
+                }
+
             }
         });
 
-        textView.setOnClickListener(new View.OnClickListener() {
+        textViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));
@@ -71,4 +66,26 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    public void loginUser(String email, String password){
+
+        firebaseAuth
+                .signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Log.d(TAG, "signInWithEmail:success");
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+//                            FirebaseUser user = mAuth.getCurrentUser();
+//                            updateUI(user);
+                        } else {
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+//                            updateUI(null);
+                        }
+                    }
+                });
+
+    }
 }

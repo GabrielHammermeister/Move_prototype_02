@@ -1,37 +1,46 @@
 package com.example.move_prototype_02.View.Home;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
-import android.view.View;
 
+import com.example.move_prototype_02.Model.HabitModel;
 import com.example.move_prototype_02.R;
-import com.example.move_prototype_02.ViewModel.HabitViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity{
 
-    HabitViewModel habitViewModel;
+    private HabitModel currentHabit;
+
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-//        habitViewModel = new ViewModelProvider(this).get(HabitViewModel.class);
-        habitViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory
-                .getInstance(this.getApplication())).get(HabitViewModel.class);
+        bottomNavigationView = findViewById(R.id.bottom_nav_view);
+
+        //Fragment container view requires access from supportfragmentmanager
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+
+        //Getting navcontroller from the host fragment
+        NavController navController = navHostFragment.getNavController();
+
+        //Setting the navcontroller into bottonNavView, merging the container with the bottonNavView
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+    }
 
 
+    public void setCurrentHabit(HabitModel currentHabitModel){
+        this.currentHabit = currentHabitModel;
+    }
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view); // represents the bottom nav view
-        NavController navController = Navigation.findNavController(this,  R.id.fragment); // represents the home fragment
-        NavigationUI.setupWithNavController(bottomNavigationView, navController);  // merge the nav bar with the fragment
-
+    public HabitModel getCurrentHabit(){
+        return this.currentHabit;
     }
 
 }

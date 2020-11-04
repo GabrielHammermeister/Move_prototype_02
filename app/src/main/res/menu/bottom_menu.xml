@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
     <item
         android:id="@+id/home_screen"
-        android:title="Home"
+        android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home"
         />
     <item
+        android:id="@+id/Habit"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_directions_run_24"
+        android:title="Habits"
+        />
+
+    <item
         android:id="@+id/create_new_habit"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_add_circle_24"
         android:title="New"
-        android:icon="@drawable/ic_new_button"
         />
     <item
         android:id="@+id/settings"
-        android:title="Settings"
+        android:enabled="true"
         android:icon="@drawable/ic_baseline_settings_24"
+        android:title="Settings"
+
         />
+
 </menu>
