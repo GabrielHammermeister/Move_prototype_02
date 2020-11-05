@@ -35,5 +35,10 @@
             android:id="@+id/navigate_habit_home"
             app:destination="@id/home_screen" />
     </fragment>
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="com.example.move_prototype_02.View.Home.Profile_fragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 
 </navigation>

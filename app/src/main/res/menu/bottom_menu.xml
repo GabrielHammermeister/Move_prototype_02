@@ -10,10 +10,10 @@
         android:title="Home"
         />
     <item
-        android:id="@+id/Habit"
+        android:id="@+id/profile_fragment"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_directions_run_24"
-        android:title="Habits"
+        android:icon="@drawable/ic_baseline_person"
+        android:title="Profile"
         />
 
     <item
@@ -21,6 +21,12 @@
         android:enabled="true"
         android:icon="@drawable/ic_baseline_add_circle_24"
         android:title="New"
+        />
+    <item
+        android:id="@+id/Habit"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_directions_run_24"
+        android:title="Habits"
         />
     <item
         android:id="@+id/settings"
