@@ -68,6 +68,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void loginUser(String email, String password){
 
+
+
         firebaseAuth
                 .signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

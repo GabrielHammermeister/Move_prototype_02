@@ -4,10 +4,8 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-  <group android:scaleX="0.13710937"
-      android:scaleY="0.13710937"
-      android:translateX="18.9"
-      android:translateY="18.9">
+  <group android:scaleX="0.2109375"
+      android:scaleY="0.2109375">
     <group>
       <clip-path
           android:pathData="M0,0h512v512h-512z"/>
@@ -21,16 +19,10 @@
               android:endX="672.256"
               android:type="linear">
             <item android:offset="0" android:color="#FFEE0280"/>
-            <item android:offset="0.038" android:color="#00EF0B85"/>
-            <item android:offset="1" android:color="#00FFFFFF"/>
+            <item android:offset="1" android:color="#FF7002EE"/>
           </gradient>
         </aapt:attr>
       </path>
-      <path
-          android:pathData="M407.284,400.8 L342.818,375.963l-22.838,-126.1L255.183,400.8 192.265,248.308 168.225,375.963 104.326,400.8 179.768,130.612 255.183,290.978l78.695,-160.366Z"
-          android:strokeWidth="1"
-          android:fillColor="#fff"
-          android:strokeColor="#00000000"/>
     </group>
   </group>
 </vector>
