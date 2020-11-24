@@ -15,9 +15,11 @@
         android:name="com.example.move_prototype_02.View.Home.Home_fragment"
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home" >
+
         <action
-            android:id="@+id/navigate_home_habit"
-            app:destination="@id/Habit" />
+            android:id="@+id/action_home_screen_to_viewPager2"
+            app:destination="@id/viewPager2" />
+
     </fragment>
 
     <fragment
@@ -31,14 +33,28 @@
         android:name="com.example.move_prototype_02.View.Home.Habit_fragment"
         android:label="fragment_habit"
         tools:layout="@layout/fragment_habit" >
-        <action
-            android:id="@+id/navigate_habit_home"
-            app:destination="@id/home_screen" />
     </fragment>
+
     <fragment
         android:id="@+id/profile_fragment"
         android:name="com.example.move_prototype_02.View.Home.Profile_fragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/viewPager2"
+        android:name="com.example.move_prototype_02.ViewPager"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager">
+
+        <argument
+            android:name="argIndex"
+            app:argType="integer"
+            android:defaultValue="0"
+            />
+        <action
+            android:id="@+id/action_habitViewPager_to_home_screen2"
+            app:destination="@id/home_screen" />
+    </fragment>
+
 
 </navigation>

@@ -6,10 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,13 +27,20 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
+
 public class Home_fragment extends Fragment{
+
+    private RecyclerView recyclerView;
 
     private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     private FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     private FirestoreRecyclerAdapter adapter;
 
     private static final String KEY_TITLE = "title";
+    private static final String TAG = "Home_fragment";
     private static final String KEY_GOAL = "goal";
     private static final String KEY_UNIT = "unit";
     private static final String KEY_USERID = "userID";
@@ -47,8 +56,39 @@ public class Home_fragment extends Fragment{
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
-        // 1. get a reference to recyclerView
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+
+        // HABITS RECYCLER VIEW
+        recyclerView = view.findViewById(R.id.recyclerView);
+        displayHabits(recyclerView);
+
+
+        return view;
+
+    }
+
+    private class HabitViewHolder extends RecyclerView.ViewHolder {
+        private Button button;
+
+        public HabitViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            button = itemView.findViewById(R.id.habit_button);
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
+    public void displayHabits(RecyclerView recyclerView){
 
         // Query
         Query query = firebaseFirestore.collection("Habitos").whereEqualTo(KEY_USERID, firebaseUser.getUid());
@@ -81,17 +121,23 @@ public class Home_fragment extends Fragment{
                 holder.button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         HomeActivity homeActivity = (HomeActivity) getActivity();
-                        homeActivity.setCurrentHabit(model);
+                        ArrayList<HabitModel> allHabits = homeActivity.getAllHabits();
 
-                        Navigation.findNavController(view).navigate(R.id.navigate_home_habit);
+                        Bundle bundle = new Bundle();
 
-//                        FragmentManager fragmentManager = homeActivity.getSupportFragmentManager();
-//                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//                        fragmentTransaction.replace(R.id.home_fragment, new Habit_fragment());
-//                        fragmentTransaction.addToBackStack(null);
-//                        fragmentTransaction.commit();
+                        int cont = 0, index = 0;
+                        for(HabitModel habit: allHabits) {
+
+                            if(habit.getId().equals(model.getId())){
+                                index = cont;
+
+                            }
+                            cont++;
+                        }
+                        bundle.putInt("index", index);
+                        Navigation.findNavController(view).navigate(R.id.viewPager2, bundle);
                     }
                 });
             }
@@ -103,30 +149,6 @@ public class Home_fragment extends Fragment{
 
         // 4. set adapter
         recyclerView.setAdapter(adapter);
-
-        return view;
-
     }
 
-    private class HabitViewHolder extends RecyclerView.ViewHolder {
-        private Button button;
-
-        public HabitViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            button = itemView.findViewById(R.id.habit_button);
-        }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-//        adapter.stopListening();
-    }
 }

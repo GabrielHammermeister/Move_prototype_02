@@ -32,7 +32,9 @@ public class Profile_fragment extends Fragment {
     private TextView textViewName, textViewEmail, textViewAge, textViewSex;
     private ImageView imageViewProfile;
 
-    private String name, sex, age;
+    private String name;
+    private String sex;
+    private String age;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,7 +66,8 @@ public class Profile_fragment extends Fragment {
                         ProfileModel profileModel = documentSnapshot.toObject(ProfileModel.class);
                         name = profileModel.getName();
                         Boolean aux = profileModel.getSex();
-                        age = Integer.toString(profileModel.getAge());
+                        String aux2 = profileModel.getIdade();
+                        age = profileModel.getIdade();
 
                         if(aux){
                             sex = "Male";

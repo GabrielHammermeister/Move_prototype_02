@@ -12,10 +12,9 @@
         android:paddingLeft="8dp"
         android:background="#3B2951"
         >
-
         <Button
             android:id="@+id/habit_button"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="100dp"
             android:drawableTop="@drawable/ic_baseline_palette_24"
             android:drawableTint="#FFFFFF"

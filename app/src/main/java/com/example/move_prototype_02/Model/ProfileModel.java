@@ -3,10 +3,16 @@ package com.example.move_prototype_02.Model;
 public class ProfileModel {
 
     private String name;
-    private int age;
+    private String idade;
     private Boolean sex;
 
     public ProfileModel() {    }
+
+    public ProfileModel(String name, String idade, Boolean sex) {
+        this.name = name;
+        this.idade = idade;
+        this.sex = sex;
+    }
 
     public String getName() {
         return name;
@@ -16,12 +22,12 @@ public class ProfileModel {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getIdade() {
+        return idade;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setIdade(String idade) {
+        this.idade = idade;
     }
 
     public Boolean getSex() {

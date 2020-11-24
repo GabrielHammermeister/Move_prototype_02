@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button buttonLogin;
     private TextView textViewRegister;
     private TextInputEditText textInputEditTextEmail, textInputEditTextPassword;
+    private static final Boolean DEV_MODE = true;
 
     private static String TAG = "LoginActivity";
     private String email, password;
@@ -41,6 +42,17 @@ public class LoginActivity extends AppCompatActivity {
         textInputEditTextEmail = findViewById(R.id.Id_userEmail);
         textInputEditTextPassword = findViewById(R.id.Id_userPassword);
 
+        register();
+        login();
+
+
+        if(DEV_MODE){
+            loginUser("gabriel.hammer523@gmail.com","ghmdc523");
+        }
+
+    }
+
+    public void login(){
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,19 +69,9 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
-        textViewRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, SignupActivity.class));
-            }
-        });
     }
 
     public void loginUser(String email, String password){
-
-
-
         firebaseAuth
                 .signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -90,4 +92,16 @@ public class LoginActivity extends AppCompatActivity {
                 });
 
     }
+
+    public void register(){
+        textViewRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, SignupActivity.class));
+            }
+        });
+    }
+
+
+
 }

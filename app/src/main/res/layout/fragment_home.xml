@@ -127,6 +127,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:orientation="horizontal"
+        android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,9 +135,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.391"
-        tools:listitem="@layout/habit_button"
-        android:visibility="visible"
-        />
+        tools:listitem="@layout/habit_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

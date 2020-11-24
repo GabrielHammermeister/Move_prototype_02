@@ -23,7 +23,7 @@
         android:title="New"
         />
     <item
-        android:id="@+id/Habit"
+        android:id="@+id/viewPager2"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_directions_run_24"
         android:title="Habits"

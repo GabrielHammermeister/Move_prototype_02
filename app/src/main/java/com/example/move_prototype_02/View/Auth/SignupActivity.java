@@ -93,7 +93,7 @@ public class SignupActivity extends AppCompatActivity {
                             HashMap<String, Object> map = new HashMap<String, Object>();
                             map.put("name", name);
                             map.put("sex", sex);
-                            map.put("idade", idade);
+                            map.put("age", idade);
 
                             profiles
                                     .document(firebaseUser.getUid())
