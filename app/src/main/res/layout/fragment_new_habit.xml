@@ -61,13 +61,14 @@
         app:layout_constraintTop_toBottomOf="@+id/text_meta">
 
         <ToggleButton
+
             android:id="@+id/domingo"
             android:layout_width="45dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="3dp"
-            android:checked="false"
             android:text="ToggleButton"
             android:textOff="D"
+            android:textOn="D"
             android:textSize="20sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="61dp" />
@@ -78,8 +79,9 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="3dp"
             android:text="ToggleButton"
-            android:textSize="20sp"
             android:textOff="S"
+            android:textOn="S"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="61dp" />
 
@@ -89,9 +91,10 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="3dp"
             android:text="ToggleButton"
-            android:textSize="20sp"
             android:textOff="T"
 
+            android:textOn="T"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="61dp" />
 
@@ -101,9 +104,10 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="3dp"
             android:text="ToggleButton"
-            android:textSize="20sp"
             android:textOff="Q"
 
+            android:textOn="Q"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="61dp" />
 
@@ -113,9 +117,10 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="3dp"
             android:text="ToggleButton"
-            android:textSize="20sp"
             android:textOff="Q"
 
+            android:textOn="Q"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="61dp" />
 
@@ -125,9 +130,10 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="3dp"
             android:text="ToggleButton"
-            android:textSize="20sp"
             android:textOff="S"
 
+            android:textOn="S"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="61dp" />
 
@@ -137,10 +143,11 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="3dp"
             android:text="ToggleButton"
-            android:textSize="20sp"
             android:textOff="S"
 
 
+            android:textOn="S"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="61dp" />
 

@@ -57,7 +57,7 @@
         android:layout_marginTop="33dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/button_check"
@@ -75,7 +75,7 @@
         android:id="@+id/textView_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Incompleto"
+        android:text="INCOMPLETO"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

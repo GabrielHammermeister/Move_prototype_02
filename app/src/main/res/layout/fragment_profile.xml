@@ -7,31 +7,16 @@
     android:background="#8C9EFF"
     tools:context=".View.Home.Profile_fragment">
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile Fragment"
-        android:textSize="30sp"
+    <ImageView
+        android:id="@+id/imageViewProfile"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.668" />
-
-    <ImageView
-        android:id="@+id/imageViewProfile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.089"
-        app:srcCompat="@drawable/custom_login_button"
+        app:layout_constraintVertical_bias="0.03"
         tools:src="@tools:sample/avatars" />
 
     <TextView
@@ -39,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextViewAge"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -51,6 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextViewName"
+        android:textSize="18dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textViewAge"
         app:layout_constraintHorizontal_bias="0.5"
@@ -63,23 +51,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextViewEmail"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        android:textSize="18dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewName"
-        app:layout_constraintVertical_bias="0.224" />
+        app:layout_constraintVertical_bias="0.103" />
 
     <TextView
         android:id="@+id/textViewSex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextViewSex"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        android:textSize="18dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toEndOf="@+id/textViewEmail"
         app:layout_constraintTop_toBottomOf="@+id/textViewAge"
-        app:layout_constraintVertical_bias="0.224" />
+        app:layout_constraintVertical_bias="0.103" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

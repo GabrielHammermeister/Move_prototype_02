@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -147,5 +149,21 @@ public class NewHabit_fragment extends Fragment {
         dom = view.findViewById(R.id.domingo);
 
         toggleButtonArrayList = new ArrayList<>(List.of(dom, seg, ter, qua, qui, sex, sab));
+        for(ToggleButton toggleButton: toggleButtonArrayList){
+            setCheckListener(toggleButton);
+        }
+    }
+
+    public void setCheckListener(ToggleButton toggleButton){
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    buttonView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.checked));
+                } else{
+                    buttonView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.unchecked));
+                }
+            }
+        });
     }
 }

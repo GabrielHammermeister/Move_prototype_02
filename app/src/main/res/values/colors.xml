@@ -6,4 +6,8 @@
     <color name="colorAnalogous01">#7002ee</color>
     <color name="colorAnalogous02">#ee0280</color>
     <color name="black">#000000</color>
+
+    <color name="checked">#00C853</color>
+    <color name="unchecked">#D50000</color>
+
 </resources>
