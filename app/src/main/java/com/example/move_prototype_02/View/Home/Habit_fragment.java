@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.move_prototype_02.Model.HabitModel;
@@ -30,6 +31,7 @@ public class Habit_fragment extends Fragment {
     private ImageView imgIcon;
     private Button buttonCheck;
     private HabitModel currentHabit;
+    private ProgressBar progressBar;
 
     private static final String KEY_ID = "id";
     private static final String TAG = "Habit_fragment";
@@ -57,12 +59,17 @@ public class Habit_fragment extends Fragment {
 
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         StorageReference storageRef = firebaseStorage.getReference();
-        String goal, title, unit, points, path = "images/triste-cachorro.jpg";
+        String goal;
+        String title;
+        String unit;
+        int points;
+        float percentage;
+        String path = "images/triste-cachorro.jpg";
 
         goal = Integer.toString(currentHabit.getGoal());
         title = currentHabit.getTitle();
         unit = currentHabit.getUnit();
-        points = Integer.toString(currentHabit.getPoints());
+        points = currentHabit.getPoints();
 
         // buscando imagem de acordo com o path
         storageRef
@@ -80,7 +87,8 @@ public class Habit_fragment extends Fragment {
         txtTitle.setText(title);
         txtGoal.setText(goal);
         txtUnit.setText(unit);
-        txtPoints.setText(points);
+        txtPoints.setText(points + "/28");
+        progressBar.setProgress(points);
 
     }
 
@@ -97,15 +105,21 @@ public class Habit_fragment extends Fragment {
         imgIcon = view.findViewById(R.id.imageView_icon);
         buttonCheck = view.findViewById(R.id.button_check);
         txtPoints = view.findViewById(R.id.textView_points);
+        progressBar = view.findViewById(R.id.progressBar_points);
     }
 
     public void checkHabit(){
         buttonCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 currentHabit.setPoints(currentHabit.getPoints() + 1);
                 updateHabit(currentHabit);
-                txtPoints.setText(Integer.toString(currentHabit.getPoints()));
+
+                txtPoints.setText(currentHabit.getPoints() + "/28");
+
+                progressBar.setProgress(currentHabit.getPoints());
+
                 txtCheck.setText("COMPLETO!");
             }
         });

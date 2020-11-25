@@ -12,9 +12,11 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="change_icon_color">
+    <style name="Circular">
+        <item name="cornerSize">50%</item>
+    </style>
 
-
+    <style name="ProgressBar" parent="Widget.AppCompat.ProgressBar">
     </style>
 
 </resources>
